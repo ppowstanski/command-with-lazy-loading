@@ -25,6 +25,12 @@
     "paths": {
       "@app/user-actions": [
         "src/app/user-actions/index.ts"
+      ],
+      "@app/user-actions/deactivate-user": [
+        "src/app/user-actions/deactivate-user/index.ts"
+      ],
+      "@app/user-actions/delete-user": [
+        "src/app/user-actions/delete-user/index.ts"
       ]
     }
   },

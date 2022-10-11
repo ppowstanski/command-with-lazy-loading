@@ -1,0 +1,1 @@
+export {DeactivateUserModule} from './deactivate-user.module';
