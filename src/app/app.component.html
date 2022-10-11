@@ -1,2 +1,6 @@
-<button (click)="deleteUser('User one')">Delete 'User one'</button>
-<button (click)="deactivateUser('User one')">Deactivate 'User one'</button>
+<ng-container *ngFor="let user of users">
+    <h3>{{user}}</h3>
+    <ng-container *ngFor="let userAction of actions;">
+        <button (click)="performAction(userAction, user)">{{userAction}} - {{user}}</button>&nbsp;
+    </ng-container>
+</ng-container>
