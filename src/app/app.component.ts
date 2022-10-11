@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'strategy-with-lazy-loading';
+
+  deleteUser(user: string) {
+    console.log(`Deleting user ${user}`);
+  }
+
+  deactivateUser(user: string) {
+    console.log(`Deactivate user ${user}`);
+  }
 }
