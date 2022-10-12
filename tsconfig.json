@@ -21,7 +21,18 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app/users-actions": [
+        "src/app/users-actions/index.ts"
+      ],
+      "@app/users-actions/deactivate-user": [
+        "src/app/users-actions/deactivate-user/index.ts"
+      ],
+      "@app/users-actions/delete-user": [
+        "src/app/users-actions/delete-user/index.ts"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
