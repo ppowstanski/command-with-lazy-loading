@@ -1,5 +1,5 @@
-import {Component, Injector} from '@angular/core';
-import {UserActionInvoker} from '@app/user-actions';
+import {Component} from '@angular/core';
+import {UserActionInvoker} from '@app/users-actions';
 
 @Component({
     selector: 'app-root',
@@ -7,7 +7,8 @@ import {UserActionInvoker} from '@app/user-actions';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    constructor(readonly injector: Injector) {
+
+    constructor(private invoker: UserActionInvoker) {
     }
 
     title = 'strategy-with-lazy-loading';
@@ -16,8 +17,8 @@ export class AppComponent {
     users = ['User One', 'User Two'];
 
     performAction(userAction: string, user: string) {
-        UserActionInvoker.execute(this.injector, userAction, user, () => {
-            console.log('Action done!!!!!');
+        this.invoker.execute(userAction, user, () => {
+            console.log('action done!!!!!');
         });
     }
 }
