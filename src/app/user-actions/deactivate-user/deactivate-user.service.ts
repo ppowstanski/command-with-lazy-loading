@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {UserAction} from '@app/user-actions';
 
 @Injectable()
-export class DeactivateUserService implements UserAction {
+export class DeactivateUserService {
     execute(user: string, callback: () => void): void {
         console.log(`Deactivate user:' ${user}'`);
         callback();
