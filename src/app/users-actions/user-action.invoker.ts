@@ -1,8 +1,9 @@
-import {UserAction} from './user-action';
 import {createNgModule, Injectable} from '@angular/core';
-import {DeactivateUserModule} from '@app/users-actions/deactivate-user';
 import {from, Observable} from 'rxjs';
+
+import {UserAction} from '@app/users-actions';
 import {DeleteUserModule} from '@app/users-actions/delete-user';
+import {DeactivateUserModule} from '@app/users-actions/deactivate-user';
 
 export const deactivateUserCommandLoader = (): Observable<UserAction> => {
     return from(
