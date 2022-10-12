@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "bundle-check": "source-map-explorer dist/strategy-with-lazy-loading/**/*.js"
   },
   "private": true,
   "dependencies": {

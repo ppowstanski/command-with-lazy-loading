@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {UserActionInvoker} from '@app/users-actions';
 
 @Component({
     selector: 'app-root',
@@ -7,7 +8,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
 
-    constructor() {
+    constructor(private invoker: UserActionInvoker) {
     }
 
     title = 'strategy-with-lazy-loading';
@@ -16,24 +17,8 @@ export class AppComponent {
     users = ['User One', 'User Two'];
 
     performAction(userAction: string, user: string) {
-        if (userAction === 'Delete') {
-            this.deleteUser(user);
-            return;
-        }
-
-        if (userAction === 'Deactivate') {
-            this.deactivateUser(user);
-            return;
-        }
-
-        console.log(`Unknown action '${userAction}'.`);
-    }
-
-    private deleteUser(user: string): void {
-        console.log(`Delete user:' ${user}'`);
-    }
-
-    private deactivateUser(user: string): void {
-        console.log(`Deactivate user:' ${user}'`);
+        this.invoker.execute(userAction, user, () => {
+            console.log('action done!!!!!');
+        });
     }
 }
