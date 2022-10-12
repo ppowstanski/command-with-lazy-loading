@@ -1,34 +1,48 @@
-import {createNgModuleRef, Injectable, Injector} from '@angular/core';
+import {createNgModule, Injectable} from '@angular/core';
+import {DeactivateUserModule} from '@app/users-actions/deactivate-user';
 import {from, Observable} from 'rxjs';
-import {DeactivateUserModule} from '@app/user-actions/deactivate-user';
-import {DeleteUserModule} from '@app/user-actions/delete-user';
-import {UserAction} from './user-action';
+import {DeleteUserModule} from '@app/users-actions/delete-user';
 
-
-export const deactivateUserCommandLoader = (injector: Injector): Observable<UserAction> => {
+export const deactivateUserCommandLoader = (): Observable<UserAction> => {
     return from(
-        import('@app/user-actions/deactivate-user')
-            .then((m) => createNgModuleRef<DeactivateUserModule>(m.DeactivateUserModule, injector).instance.command));
+        import('@app/users-actions/deactivate-user')
+            .then((m) => createNgModule<DeactivateUserModule>(m.DeactivateUserModule).instance));
 };
 
-export const deleteUserCommandLoader = (injector: Injector): Observable<UserAction> => {
+export const deleteUserCommandLoader = (): Observable<UserAction> => {
     return from(
-        import('@app/user-actions/delete-user')
-            .then((m) => createNgModuleRef<DeleteUserModule>(m.DeleteUserModule, injector).instance.command));
+        import('@app/users-actions/delete-user')
+            .then((m) => createNgModule<DeleteUserModule>(m.DeleteUserModule).instance));
 };
 
+@Injectable({providedIn: 'root'})
 export class UserActionInvoker {
-    static execute(injector: Injector, userAction: string, user: string, callback: () => void): void {
+    private commands = new Map<string, UserAction>();
+
+    execute(userAction: string, user: string, callback: () => void): void {
+
+        const command = this.commands.get(userAction);
+
+        if (!!command) {
+            command.execute(user, callback);
+            return;
+        }
+
         switch (userAction) {
             case 'Delete':
-                deleteUserCommandLoader(injector).subscribe((command: UserAction) => command.execute(user, callback));
+                deleteUserCommandLoader().subscribe((command: UserAction) => this.setCommand(userAction, command, user, callback));
                 break;
             case 'Deactivate':
-                deactivateUserCommandLoader(injector).subscribe((command: UserAction) => command.execute(user, callback));
+                deactivateUserCommandLoader().subscribe((command: UserAction) => this.setCommand(userAction, command, user, callback));
                 break;
             default:
                 console.log(`Unknown action '${userAction}'.`);
                 return;
         }
+    }
+
+    private setCommand(userAction: string, command: UserAction, user: string, callback: () => void): void {
+        this.commands.set(userAction, command);
+        command.execute(user, callback);
     }
 }
