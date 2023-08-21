@@ -1,13 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
+import {UserModule} from '@app/shared/rest/user';
+
 import {DeleteUserService} from './delete-user.service';
-import {UserAction} from '@app/users-actions';
 import {DeleteUserCommand} from './delete-user.command';
+import {UserAction} from '../user-action';
 
 @NgModule({
     declarations: [],
     providers: [DeleteUserService],
-    imports: [CommonModule]
+    imports: [CommonModule, UserModule]
 })
 export class DeleteUserModule {
     constructor(private commandService: DeleteUserService) {

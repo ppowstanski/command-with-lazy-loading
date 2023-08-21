@@ -23,14 +23,14 @@
       "dom"
     ],
     "paths": {
-      "@app/users-actions": [
-        "src/app/users-actions/index.ts"
+      "@app/rest-api/user": [
+        "src/app/rest-api/user/index.ts"
       ],
-      "@app/users-actions/deactivate-user": [
-        "src/app/users-actions/deactivate-user/index.ts"
+      "@app/shared/*": [
+        "src/app/shared/*"
       ],
-      "@app/users-actions/delete-user": [
-        "src/app/users-actions/delete-user/index.ts"
+      "@app/features/user-actions": [
+        "src/app/features/user-actions/index.ts"
       ]
     },
     "useDefineForClassFields": false

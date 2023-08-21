@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
+import {ConfirmationModule} from '@app/shared/confirmation';
+
 import {AppComponent} from './app.component';
 
 @NgModule({
@@ -8,7 +10,8 @@ import {AppComponent} from './app.component';
         AppComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        ConfirmationModule
     ],
     providers: [],
     bootstrap: [AppComponent]

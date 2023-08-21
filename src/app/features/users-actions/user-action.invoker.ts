@@ -1,7 +1,7 @@
 import {Injectable, Injector} from '@angular/core';
 
-import {DeleteUserLoader} from '@app/users-actions/delete-user';
-import {DeactivateUserLoader} from '@app/users-actions/deactivate-user';
+import {DeleteUserLoader} from './delete-user';
+import {DeactivateUserLoader} from './deactivate-user';
 
 import {UserAction} from './user-action';
 
@@ -13,7 +13,7 @@ export class UserActionInvoker {
     constructor(private readonly injector: Injector) {
     }
 
-    execute(userAction: UserActionType , user: string, callback: () => void): void {
+    execute(userAction: UserActionType, user: string, callback: () => void): void {
         switch (userAction) {
             case 'Delete':
                 DeleteUserLoader
