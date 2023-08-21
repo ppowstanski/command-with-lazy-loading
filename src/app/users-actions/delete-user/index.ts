@@ -1,1 +1,1 @@
-export {DeleteUserModule} from './delete-user.module';
+export {DeleteUserLoader} from './delete-user.loader';

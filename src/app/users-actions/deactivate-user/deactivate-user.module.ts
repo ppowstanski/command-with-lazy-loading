@@ -2,17 +2,18 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DeactivateUserService} from './deactivate-user.service';
 import {UserAction} from '@app/users-actions';
+import {DeactivateUserCommand} from './deactivate-user.command';
 
 @NgModule({
     declarations: [],
     providers: [DeactivateUserService],
     imports: [CommonModule]
 })
-export class DeactivateUserModule implements UserAction {
-    constructor(private command: DeactivateUserService) {
+export class DeactivateUserModule {
+    constructor(private commandService: DeactivateUserService) {
     }
 
-    execute(user: string, callback: () => void): void {
-        this.command.execute(user, callback);
+    createCommandInstance(): UserAction {
+        return new DeactivateUserCommand(this.commandService)
     }
 }

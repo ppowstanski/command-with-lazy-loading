@@ -1,1 +1,1 @@
-export {DeactivateUserModule} from './deactivate-user.module';
+export {DeactivateUserLoader} from './deactivate-user.loader';

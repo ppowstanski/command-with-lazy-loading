@@ -1,2 +1,2 @@
 export {UserAction} from './user-action';
-export {UserActionInvoker} from './user-action.invoker';
+export {UserActionInvoker, UserActionType} from './user-action.invoker';

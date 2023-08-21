@@ -2,17 +2,18 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DeleteUserService} from './delete-user.service';
 import {UserAction} from '@app/users-actions';
+import {DeleteUserCommand} from './delete-user.command';
 
 @NgModule({
     declarations: [],
     providers: [DeleteUserService],
     imports: [CommonModule]
 })
-export class DeleteUserModule implements UserAction {
-    constructor(private command: DeleteUserService) {
+export class DeleteUserModule {
+    constructor(private commandService: DeleteUserService) {
     }
 
-    execute(user: string, callback: () => void): void {
-        this.command.execute(user, callback);
+    createCommandInstance(): UserAction {
+        return new DeleteUserCommand(this.commandService)
     }
 }

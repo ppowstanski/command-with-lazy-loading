@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class DeleteUserService {
-    execute(user: string, callback: () => void): void {
-        console.log(`Delete user:' ${user}'`);
-        callback();
+    delete(user: string): Observable<void> {
+        console.log(`Delete user:' ${user}' via RestAPI`);
+        return new Observable<void>();
     }
 }
