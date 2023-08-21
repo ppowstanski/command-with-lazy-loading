@@ -11,12 +11,12 @@ export class AppComponent {
     constructor(private invoker: UserActionInvoker) {
     }
 
-    performAction(userAction: UserActionType, user: string) {
+    protected actions: UserActionType[] = ['Delete', 'Deactivate'];
+    protected users = ['User One', 'User Two'];
+
+    protected performAction(userAction: UserActionType, user: string) {
         this.invoker.execute(userAction, user, () => {
             console.log('action done!!!!!');
         });
     }
-
-    actions: UserActionType[] = ['Delete', 'Deactivate'];
-    users = ['User One', 'User Two'];
 }
