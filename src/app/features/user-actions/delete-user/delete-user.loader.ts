@@ -1,7 +1,8 @@
 import {DeleteUserModule} from './delete-user.module';
 import {from, map, Observable, of, tap} from 'rxjs';
-import {UserAction} from '..';
 import {createNgModule, Injector, NgModuleRef} from '@angular/core';
+
+import {UserAction} from '@app/features/user-actions';
 
 export class DeleteUserLoader {
     private static moduleCache: DeleteUserModule;

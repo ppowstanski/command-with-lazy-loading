@@ -1,17 +1,18 @@
+import {filter, Observable, of, switchMap} from 'rxjs';
+
+import {UserAction} from '@app/features/user-actions';
+
 import {DeleteUserService} from './delete-user.service';
-import {UserAction} from '..';
-import {filter, of, switchMap, tap} from 'rxjs';
 
 export class DeleteUserCommand implements UserAction {
     constructor(private readonly commandService: DeleteUserService) {
     }
 
-    execute(user: string, callback: () => void): void {
-        of(undefined).pipe(
+    execute(user: string): Observable<void> {
+        return of(void 0).pipe(
             switchMap(() => this.commandService.confirm()),
             filter(confirmed => confirmed),
-            switchMap(() => this.commandService.delete(user)),
-            tap(() => callback())
-        ).subscribe();
+            switchMap(() => this.commandService.delete(user))
+        );
     }
 }

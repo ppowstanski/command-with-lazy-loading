@@ -1,6 +1,8 @@
 import {from, map, Observable, of, tap} from 'rxjs';
-import {UserAction} from '..';
 import {createNgModule, Injector, NgModuleRef} from '@angular/core';
+
+import {UserAction} from '@app/features/user-actions';
+
 import {DeactivateUserModule} from './deactivate-user.module';
 
 export class DeactivateUserLoader {

@@ -23,14 +23,11 @@
       "dom"
     ],
     "paths": {
-      "@app/rest-api/user": [
-        "src/app/rest-api/user/index.ts"
+      "@app/features/user-actions": [
+        "src/app/features/user-actions/index.ts"
       ],
       "@app/shared/*": [
         "src/app/shared/*"
-      ],
-      "@app/features/user-actions": [
-        "src/app/features/user-actions/index.ts"
       ]
     },
     "useDefineForClassFields": false

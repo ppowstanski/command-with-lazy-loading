@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {UserService} from '@app/shared/rest/user';
+
 import {ConfirmationService} from '@app/shared/confirmation';
+import {UserService} from '@app/shared/rest/user';
 
 @Injectable()
 export class DeactivateUserService {

@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
+import {UserAction} from '@app/features/user-actions';
 import {UserModule} from '@app/shared/rest/user';
 
 import {DeactivateUserCommand} from './deactivate-user.command';
 import {DeactivateUserService} from './deactivate-user.service';
-import {UserAction} from '../user-action';
 
 @NgModule({
     declarations: [],
