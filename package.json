@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^16.2.1",
     "@angular/platform-browser-dynamic": "^16.2.1",
     "@angular/router": "^16.2.1",
+    "@types/node": "^20.5.1",
     "rxjs": "~7.5.0",
     "source-map-explorer": "^2.5.3",
     "tslib": "^2.3.0",
