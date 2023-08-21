@@ -1,5 +1,5 @@
 import {Injectable, Injector} from '@angular/core';
-import {map, Observable, switchMap} from 'rxjs';
+import {map, Observable, switchMap, take} from 'rxjs';
 
 import {DeleteUserLoader} from './delete-user';
 import {DeactivateUserLoader} from './deactivate-user';

@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {take} from 'rxjs';
 
 import {UserActionInvoker, UserActionType} from '@app/features/user-actions';
 
@@ -17,13 +16,13 @@ export class AppComponent {
     }
 
     protected performAction(userAction: UserActionType, user: string) {
-        this.invoker.execute(userAction, user)
-            .pipe(
-                take(1)
-            )
+        this
+            .invoker
+            .execute(userAction, user)
             .subscribe({
-                next: () => console.log(`Action done!`),
-                error: err => console.error(`Error occurred while performing action: '${err}'`)
-            });
+                error: err => console.error(`Error occurred while performing action: '${err}'`),
+                complete: () => console.log(`Action done!`)
+            }
+        );
     }
 }
