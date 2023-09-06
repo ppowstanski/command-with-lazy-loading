@@ -1,6 +1,12 @@
 <ng-container *ngFor="let user of users">
-    <h3>{{user}}</h3>
-    <ng-container *ngFor="let userAction of actions;">
-        <button (click)="performAction(userAction, user)">{{userAction}} - {{user}}</button>&nbsp;
-    </ng-container>
+    <mat-card style="width: 500px; margin-bottom: 2rem">
+        <mat-card-header>
+            <mat-card-title>{{user}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <ng-container *ngFor="let userAction of actions;">
+                <button mat-raised-button color="primary" (click)="performAction(userAction, user)">{{userAction}}</button>&nbsp;
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
 </ng-container>

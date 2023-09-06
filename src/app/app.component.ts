@@ -21,7 +21,7 @@ export class AppComponent {
             .execute(userAction, user)
             .subscribe({
                 error: err => console.error(`Error occurred while performing action: '${err}'`),
-                complete: () => console.log(`Action done!`)
+                next: () => console.log(`Action done!`)
             }
         );
     }

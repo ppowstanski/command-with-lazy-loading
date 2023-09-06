@@ -11,8 +11,8 @@ export class DeactivateUserService {
         private readonly confirmationService: ConfirmationService) {
     }
 
-    confirm(): Observable<boolean> {
-        return this.confirmationService.confirm();
+    confirm(user: string): Observable<boolean> {
+        return this.confirmationService.confirm(`Do you want to deactivate user '${user}'?`);
     }
 
     deactivate(user: string): Observable<void> {

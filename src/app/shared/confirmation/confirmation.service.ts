@@ -1,10 +1,20 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {filter, Observable, tap} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmationComponent} from '@app/shared/confirmation/confirmation.component';
 
 @Injectable()
 export class ConfirmationService {
-    confirm(): Observable<boolean> {
-        console.log('Action confirmed!')
-        return of(true);
+
+    constructor(public dialog: MatDialog) {
+    }
+
+    confirm(confirmationContent: string): Observable<boolean> {
+        const dialogRef = this.dialog.open(ConfirmationComponent, {data : {confirmationContent}});
+
+        return dialogRef.afterClosed().pipe(
+            filter(confirmed => confirmed),
+            tap(() => console.log(`Action confirmed!`))
+        );
     }
 }

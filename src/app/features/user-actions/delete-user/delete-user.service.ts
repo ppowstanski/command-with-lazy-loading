@@ -11,8 +11,8 @@ export class DeleteUserService {
         private readonly confirmationService: ConfirmationService) {
     }
 
-    confirm(): Observable<boolean> {
-        return this.confirmationService.confirm();
+    confirm(user: string): Observable<boolean> {
+        return this.confirmationService.confirm(`Do you want to delete user '${user}'?`);
     }
 
     delete(user: string): Observable<void> {

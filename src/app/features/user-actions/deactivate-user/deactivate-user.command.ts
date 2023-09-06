@@ -10,7 +10,7 @@ export class DeactivateUserCommand implements UserAction {
 
     execute(user: string): Observable<void> {
         return of(void 0).pipe(
-            switchMap(() => this.commandService.confirm()),
+            switchMap(() => this.commandService.confirm(user)),
             filter(confirmed => confirmed),
             switchMap(() => this.commandService.deactivate(user)),
         )
